@@ -113,9 +113,12 @@ app.delete('/all', (req, res) => {
     res.status(401).json({ error: 'You are not authorised for this action' });
     return;
   }
-
-  jokes.length = 0;
-  res.sendStatus(200);
+  if (apiKey === masterKey) {
+    jokes.length = 0;
+    res.sendStatus(200);
+  } else {
+    res.status(401).json({ error: 'Wrong apiKey provided' });
+  }
 });
 
 app.listen(port, () => {
