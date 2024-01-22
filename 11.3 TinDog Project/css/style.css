@@ -26,3 +26,12 @@
   height: 100px;
   border-radius: 50%;
 }
+
+.hero {
+  position: relative;
+  top: 48px;
+}
+
+#testimonial {
+  background-color: gainsboro;
+}
