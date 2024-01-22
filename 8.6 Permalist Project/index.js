@@ -17,14 +17,12 @@ let items = [
   { id: 2, title: 'Finish homework' },
 ];
 
-const db = new pg.Client({
-  user: 'postgres',
-  host: 'localhost',
-  database: 'permalist',
-  password: db_password,
-  port: 5432,
+const db = new pg.Pool({
+  connectionString: process.env.DBConfigLink,
+  ssl: {
+    rejectUnauthorized: false,
+  },
 });
-
 db.connect();
 
 async function getTitles() {
